@@ -49,7 +49,7 @@ class Record:
         return phones
 
     def __str__(self):
-        return f"Contact name: {self.name.value}, birthday: {self.birthday if self.birthday else ""}, phones: {'; '.join(p.value for p in self.phones)}"
+        return f"Contact name: {self.name.value}, birthday: {self.birthday if self.birthday else ''}, phones: {'; '.join(p.value for p in self.phones)}"
     
 class AddressBook(UserDict):
     def add_record(self, record):
