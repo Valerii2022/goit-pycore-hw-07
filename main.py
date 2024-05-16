@@ -54,7 +54,9 @@ class Record:
         return self.birthday
 
     def __str__(self):
-        return f"Contact name: {self.name.value}, birthday: {self.birthday if self.birthday else 'not provided'}, phones: {'; '.join(p.value for p in self.phones)}"
+        birthday = self.birthday if self.birthday else 'not provided'
+        phones ='; '.join(p.value for p in self.phones) if self.phones else'not provided'
+        return f"Contact name: {self.name.value}, birthday: {birthday}, phones: {phones}"
     
 class AddressBook(UserDict):
     def add_record(self, record):
@@ -102,7 +104,7 @@ def input_error(func):
         except KeyError:
             return "Contact not found. Please provide a valid name."
         except ValueError as e:
-            return f"Give me correct name and phone please.{e}"
+            return f"Give me correct name and phone please. {e}"
         except IndexError:
             return "Please provide the correct number of arguments."
         except Exception:
